@@ -104,7 +104,6 @@ class ShogiGame:
     def is_valid_move(self, start, end, player):
         start_row, start_col = start
         end_row, end_col = end
-        print(start, end)
 
         if start_row < 0 or start_row >= 9 or start_col < 0 or start_col >= 9:
             return False
@@ -113,10 +112,6 @@ class ShogiGame:
             return False
 
         start_piece = self.board[start_row][start_col]
-        end_piece = self.board[end_row][end_col]
-
-        # if end_piece.piece_type != PieceType.EMPTY:
-        #     return False
         move_vectors = None
         if 9 <= start_piece.piece_type <= 12:
             move_vectors = self.move_vectors[PieceType.GOLD]
@@ -171,10 +166,8 @@ class ShogiGame:
                                 prev_i, prev_j = self.last_clicked_pos
                                 if self.player1_turn and self.last_clicked_button.piece_type is not PieceType.EMPTY:
                                     self.player1_captured_pieces.append(self.board[i][j])
-                                    print("HERE")
                                 elif not self.player1_turn and self.last_clicked_button.piece_type is not PieceType.EMPTY:
                                     self.player0_captured_pieces.append(self.board[i][j])
-                                    print("HERE2")
                                 if self.is_promotion_move(j, self.player1_turn, self.last_clicked_button.piece_type):
                                     self.board[i][j] = Piece(self.promote_piece(self.last_clicked_button.piece_type), self.player1_turn)
                                 else:
@@ -188,6 +181,4 @@ class ShogiGame:
                                 self.last_clicked_pos = None
                 self.screen.fill((255, 255, 255))
                 self.draw_board()
-                # if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
-                #     self.display_captured_pieces(self.screen)
                 pygame.display.flip()
