@@ -101,34 +101,6 @@ class ShogiGame:
                 image = pygame.transform.scale(image, (60, 60))
                 self.screen.blit(image, (i * 80 + 10, j * 80 + 10))
 
-    # def display_captured_pieces(self, surface):
-    #
-    #     x = pygame.mouse.get_pos()[0]
-    #     y = pygame.mouse.get_pos()[1]
-    #     player_captured_pieces = self.player1_captured_pieces if self.player1_turn else self.player0_captured_pieces
-    #
-    #     box_width = 200
-    #     box_height = 300
-    #     box_x = x
-    #     box_y = y - box_height - 10
-    #
-    #     pygame.draw.rect(surface, (255, 255, 255), pygame.Rect(box_x, box_y, box_width, box_height))
-    #
-    #     y = box_y + 20
-    #
-    #     # captured_pieces = player_captured_pieces
-    #     # captured_pieces.sort(reverse=True)
-    #
-    #     x = box_x + 10
-    #     for piece in player_captured_pieces:
-    #         #for _ in range(count):
-    #         image = self.piece_images[piece.piece_type]
-    #         image = pygame.transform.scale(image, (60, 60))
-    #         surface.blit(image, (x, y))
-    #         x += 80
-    #         # x = box_x + 10
-    #         # y += 80
-
     def is_valid_move(self, start, end, player):
         start_row, start_col = start
         end_row, end_col = end
